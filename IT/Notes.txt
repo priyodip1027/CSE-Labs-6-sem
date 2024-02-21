@@ -1,0 +1,390 @@
+Indian States
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian States and Capitals</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    button {
+        margin: 5px;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #capital {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<h2>Indian States and Capitals</h2>
+
+<div id="stateButtons">
+    <!-- Buttons for each state -->
+</div>
+
+<div id="capital"></div>
+
+<script>
+$(document).ready(function(){
+    // JSON data containing Indian states and capitals
+    var indianStates = [
+        {"state": "Andhra Pradesh", "capital": "Hyderabad"},
+        {"state": "Arunachal Pradesh", "capital": "Itanagar"},
+        {"state": "Assam", "capital": "Dispur"},
+        {"state": "Bihar", "capital": "Patna"},
+        {"state": "Chhattisgarh", "capital": "Raipur"},
+        {"state": "Goa", "capital": "Panaji"},
+        {"state": "Gujarat", "capital": "Gandhinagar"},
+        {"state": "Haryana", "capital": "Chandigarh"},
+        {"state": "Himachal Pradesh", "capital": "Shimla"},
+        {"state": "Jharkhand", "capital": "Ranchi"},
+        {"state": "Karnataka", "capital": "Bangalore"},
+        {"state": "Kerala", "capital": "Thiruvananthapuram"},
+        {"state": "Madhya Pradesh", "capital": "Bhopal"},
+        {"state": "Maharashtra", "capital": "Mumbai"},
+        {"state": "Manipur", "capital": "Imphal"},
+        {"state": "Meghalaya", "capital": "Shillong"},
+        {"state": "Mizoram", "capital": "Aizawl"},
+        {"state": "Nagaland", "capital": "Kohima"},
+        {"state": "Odisha", "capital": "Bhubaneswar"},
+        {"state": "Punjab", "capital": "Chandigarh"},
+        {"state": "Rajasthan", "capital": "Jaipur"},
+        {"state": "Sikkim", "capital": "Gangtok"},
+        {"state": "Tamil Nadu", "capital": "Chennai"},
+        {"state": "Telangana", "capital": "Hyderabad"},
+        {"state": "Tripura", "capital": "Agartala"},
+        {"state": "Uttar Pradesh", "capital": "Lucknow"},
+        {"state": "Uttarakhand", "capital": "Dehradun"},
+        {"state": "West Bengal", "capital": "Kolkata"},
+        {"state": "Andaman and Nicobar Islands", "capital": "Port Blair"},
+        {"state": "Chandigarh", "capital": "Chandigarh"},
+        {"state": "Dadra and Nagar Haveli and Daman and Diu", "capital": "Daman"},
+        {"state": "Lakshadweep", "capital": "Kavaratti"},
+        {"state": "Delhi", "capital": "New Delhi"},
+        {"state": "Puducherry", "capital": "Puducherry"}
+    ];
+
+    // Dynamically create buttons for each state
+    $.each(indianStates, function(index, state){
+        var button = $("<button>").text(state.state);
+        button.attr("data-capital", state.capital);
+        button.click(function(){
+            var capital = $(this).data("capital");
+            $("#capital").text("Capital of " + state.state + ": " + capital);
+        });
+        $("#stateButtons").append(button);
+    });
+});
+</script>
+
+</body>
+</html>
+
+
+Voting Machine
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voting Webpage</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .candidate {
+        display: inline-block;
+        margin: 20px;
+    }
+    .candidate img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+    }
+    .vote-button {
+        display: block;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .vote-button:hover {
+        background-color: #0056b3;
+    }
+    #results {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Vote for Your Favorite Candidate</h2>
+    
+    <div class="candidate">
+        <img src="candidate1.jpg" alt="Candidate 1">
+        <p>Candidate 1</p>
+        <button class="vote-button" id="vote1">Vote</button>
+    </div>
+    
+    <div class="candidate">
+        <img src="candidate2.jpg" alt="Candidate 2">
+        <p>Candidate 2</p>
+        <button class="vote-button" id="vote2">Vote</button>
+    </div>
+    
+    <div class="candidate">
+        <img src="candidate3.jpg" alt="Candidate 3">
+        <p>Candidate 3</p>
+        <button class="vote-button" id="vote3">Vote</button>
+    </div>
+    
+    <button id="submit">Submit Votes</button>
+    
+    <div id="results"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var votes = [0, 0, 0];
+
+    $("#vote1").click(function() {
+        votes[0]++;
+    });
+
+    $("#vote2").click(function() {
+        votes[1]++;
+    });
+
+    $("#vote3").click(function() {
+        votes[2]++;
+    });
+
+    $("#submit").click(function() {
+        $("#results").html("<h3>Votes:</h3>");
+        $(".candidate").each(function(index) {
+            var candidateName = $(this).find("p").text();
+            var candidateVotes = votes[index];
+            $("#results").append("<p>" + candidateName + ": " + candidateVotes + "</p>");
+        });
+    });
+</script>
+
+</body>
+</html>
+
+Recipe
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe and Quantity Selector</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    select {
+        padding: 8px;
+        margin: 10px 0;
+    }
+    input[type="text"] {
+        padding: 8px;
+        margin: 10px 0;
+    }
+    #recipe {
+        margin-top: 20px;
+    }
+    #recipe img {
+        width: 100px;
+        height: 100px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Quantity Selector</h2>
+    
+    <div>
+        <label for="item1">Item 1:</label>
+        <select id="item1">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <br>
+        <label for="item2">Item 2:</label>
+        <select id="item2">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <br>
+        <label for="item3">Item 3:</label>
+        <select id="item3">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <br>
+        <label for="item4">Item 4:</label>
+        <select id="item4">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+    
+    <input type="text" id="recipe" placeholder="Write your recipe here">
+    <button id="submit">Submit</button>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#submit").click(function() {
+            // Convert quantity selections to paragraph
+            $("select").each(function() {
+                var quantity = $(this).val();
+                $(this).replaceWith("<p>Quantity: " + quantity + "</p>");
+            });
+
+            // Convert recipe input to paragraph
+            var recipe = $("#recipe").val();
+            $("#recipe").replaceWith("<p>" + recipe + "</p>");
+
+            // Move image from right to left
+            $("#recipe").before('<img src="image.jpg">');
+            $("#recipe").prev().animate({marginLeft: '0'}, "slow");
+        });
+    });
+</script>
+
+</body>
+</html>
+
+Bank sccount 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banking System</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div>
+    <h2>Banking System</h2>
+    <button id="createAccount">Create Account</button>
+    <button id="checkBalance">Check Balance</button>
+    <button id="withdrawAmount">Withdraw Amount</button>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var accounts = []; // Array to store accounts
+
+        // Function to create a new account
+        function createAccount() {
+            var accountNumber = Math.floor(Math.random() * 1000000); // Generate a random account number
+            var initialBalance = parseFloat(prompt("Enter initial balance:"));
+            accounts.push({ accountNumber: accountNumber, balance: initialBalance });
+            alert("Account created successfully. Account Number: " + accountNumber);
+        }
+
+        // Function to check if account exists
+        function accountExists(accountNumber) {
+            for (var i = 0; i < accounts.length; i++) {
+                if (accounts[i].accountNumber === accountNumber) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Function to check balance
+        function checkBalance(accountNumber) {
+            if (accountExists(accountNumber)) {
+                for (var i = 0; i < accounts.length; i++) {
+                    if (accounts[i].accountNumber === accountNumber) {
+                        alert("Balance for account " + accountNumber + ": $" + accounts[i].balance.toFixed(2));
+                        return;
+                    }
+                }
+            } else {
+                alert("Account does not exist.");
+            }
+        }
+
+        // Function to withdraw amount
+        function withdrawAmount(accountNumber, amount) {
+            if (accountExists(accountNumber)) {
+                for (var i = 0; i < accounts.length; i++) {
+                    if (accounts[i].accountNumber === accountNumber) {
+                        if (accounts[i].balance >= amount) {
+                            accounts[i].balance -= amount;
+                            alert("Amount $" + amount.toFixed(2) + " withdrawn successfully. New balance: $" + accounts[i].balance.toFixed(2));
+                        } else {
+                            alert("Insufficient funds.");
+                        }
+                        return;
+                    }
+                }
+            } else {
+                alert("Account does not exist.");
+            }
+        }
+
+        // Event listeners for buttons
+        $("#createAccount").click(function() {
+            createAccount();
+        });
+
+        $("#checkBalance").click(function() {
+            var accountNumber = parseInt(prompt("Enter account number:"));
+            checkBalance(accountNumber);
+        });
+
+        $("#withdrawAmount").click(function() {
+            var accountNumber = parseInt(prompt("Enter account number:"));
+            var amount = parseFloat(prompt("Enter amount to withdraw:"));
+            withdrawAmount(accountNumber, amount);
+        });
+    });
+</script>
+
+</body>
+</html>
+
