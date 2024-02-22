@@ -1,0 +1,156 @@
+// Ticket booking system 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ticket Booking System</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+.container {
+    margin-top: 50px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">Ticket Booking System</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="placeSelect">Select a Place:</label>
+            <select id="placeSelect" class="form-control">
+                <option value="0">Place A - $100</option>
+                <option value="1">Place B - $150</option>
+                <option value="2">Place C - $200</option>
+                <option value="3">Place D - $250</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="quantityInput">Quantity:</label>
+            <input type="number" id="quantityInput" class="form-control" min="1" value="1">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+            <button id="bookButton" class="btn btn-primary btn-block">Book Tickets</button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+            <div id="bookingSummary" class="alert alert-success" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#bookButton").click(function(){
+        var placeIndex = $("#placeSelect").val();
+        var place = $("#placeSelect option:selected").text();
+        var quantity = parseInt($("#quantityInput").val());
+        var price = parseInt($("#placeSelect option:selected").text().split("-")[1]);
+        var totalFare = price * quantity;
+
+        var summary = `
+            <p><strong>Booking Summary:</strong></p>
+            <p><strong>Place:</strong> ${place}</p>
+            <p><strong>Quantity:</strong> ${quantity}</p>
+            <p><strong>Price per ticket:</strong> $${price}</p>
+            <p><strong>Total fare:</strong> $${totalFare}</p>
+        `;
+
+        $("#bookingSummary").html(summary).fadeIn();
+    });
+});
+</script>
+
+</body>
+</html>
+
+
+// Ticket system 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Reservation System</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+.container {
+    margin-top: 50px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">Hotel Reservation System</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="checkInDate">Check-in Date:</label>
+            <input type="date" id="checkInDate" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="checkOutDate">Check-out Date:</label>
+            <input type="date" id="checkOutDate" class="form-control">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <label for="roomType">Room Type:</label>
+            <select id="roomType" class="form-control">
+                <option value="single">Single</option>
+                <option value="double">Double</option>
+                <option value="suite">Suite</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="numGuests">Number of Guests:</label>
+            <input type="number" id="numGuests" class="form-control" min="1" value="1">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <button id="checkAvailabilityButton" class="btn btn-primary btn-block">Check Availability</button>
+        </div>
+    </div>
+    <div class="row mt-3" id="availabilityMessage" style="display: none;">
+        <div class="col-md-12">
+            <div id="availabilityAlert" class="alert" role="alert"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#checkAvailabilityButton").click(function(){
+        var checkInDate = $("#checkInDate").val();
+        var checkOutDate = $("#checkOutDate").val();
+        var roomType = $("#roomType").val();
+        var numGuests = $("#numGuests").val();
+
+        // Perform availability check (dummy implementation)
+        // Replace this with actual backend logic
+        var isAvailable = Math.random() < 0.5; // Dummy random check
+
+        if (isAvailable) {
+            var message = `Room available for ${numGuests} guests from ${checkInDate} to ${checkOutDate}.`;
+            $("#availabilityAlert").removeClass("alert-danger").addClass("alert-success").text(message);
+        } else {
+            $("#availabilityAlert").removeClass("alert-success").addClass("alert-danger").text("Room not available for the selected dates.");
+        }
+
+        $("#availabilityMessage").fadeIn();
+    });
+});
+</script>
+
+</body>
+</html>
+
+

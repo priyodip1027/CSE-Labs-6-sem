@@ -1,0 +1,110 @@
+// Creating a button 
+<script>
+$(document).ready(function(){
+    $("#myButton").click(function(){
+        $("#message").text("Button clicked!");
+    });
+});
+</script>
+</head>
+<body>
+
+<button id="myButton">Click Me</button>
+<p id="message"></p>
+
+</body>
+
+
+//animation on clicking a button 
+<script>
+$(document).ready(function(){
+    $("#myButton").click(function(){
+        $("#message").text("Button clicked!");
+        $("#message").fadeIn(1000).delay(2000).fadeOut(1000);
+    });
+});
+</script>
+<style>
+#message {
+    display: none;
+}
+</style>
+</head>
+<body>
+
+<button id="myButton">Click Me</button>
+<p id="message"></p>
+
+</body>
+
+//Animation background 
+$(document).ready(function(){
+    function animateBackground() {
+        $("#animatedDiv").animate({backgroundColor: "blue"}, 1000, function(){
+            $("#animatedDiv").animate({backgroundColor: "red"}, 1000, function(){
+                animateBackground(); // Recursively call the function to create a continuous animation loop
+            });
+        });
+    }
+
+    animateBackground(); // Start the animation when the document is ready
+});
+</script>
+<style>
+#animatedDiv {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
+</style>
+</head>
+<body>
+
+<div id="animatedDiv"></div>
+
+//DROPDOWN
+<select id="dropdown">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+</select>
+<button id="submitButton">Submit</button>
+
+
+//<input type="checkbox" id="checkbox1" value="option1">
+<label for="checkbox1">Option 1</label><br>
+
+<input type="checkbox" id="checkbox2" value="option2">
+<label for="checkbox2">Option 2</label><br>
+
+//frequency
+var data = ["Apple", "Banana", "Apple", "Orange", "Banana", "Apple", "Apple", "Orange", "Orange", "Grape"];
+
+// Function to count the frequency of items and populate the table
+function countFrequency(data) {
+    var frequency = {};
+    
+    // Count frequency of each item
+    data.forEach(function(item) {
+        if (frequency[item]) {
+            frequency[item]++;
+
+//Creating 29 different fonts and colour 
+$(document).ready(function(){
+    // Define an array of fonts
+    var fonts = ["Arial", "Verdana", "Tahoma", "Helvetica", "Times New Roman", "Courier New", "Georgia", "Garamond", "Impact", "Comic Sans MS"];
+
+    // Define an array of colors
+    var colors = ["red", "blue", "green", "yellow", "orange", "purple", "cyan", "magenta", "brown", "gray"];
+
+    // Iterate through the fonts and colors to generate list items
+    var html = "";
+    var counter = 1;
+    fonts.forEach(function(font) {
+        colors.forEach(function(color) {
+            html += `<li class="list-group-item"><span class="font-color-example" id="font-color-example-${counter}" style="font-family: ${font}; color: ${color};">Font and color ${counter}</span></li>`;
+            counter++;
+        });
+    });
+
+$(".list-group").append(html);
