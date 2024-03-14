@@ -1,0 +1,29 @@
+<!-- directory_app/templates/directory_app/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Directory</title>
+</head>
+<body>
+    <h1>Website Directory</h1>
+
+    <h2>Categories</h2>
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.name }} - Visits: {{ category.num_visits }} - Likes: {{ category.num_likes }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Pages</h2>
+    <ul>
+        {% for page in pages %}
+            <li>{{ page.title }} - Category: {{ page.category.name }} - Views: {{ page.views }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'add_category' %}">Add Category</a>
+    <a href="{% url 'add_page' %}">Add Page</a>
+</body>
+</html>
